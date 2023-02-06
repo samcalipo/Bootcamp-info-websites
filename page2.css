@@ -1,0 +1,212 @@
+*{
+    box-sizing: border-box;
+
+    /* background-color: rgba(255, 0, 0, 0.2); ; */
+
+}
+/* -------------------- LAYOUT PAGE 1----------------------- */
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Source Sans Pro';
+    font-weight: 400;
+
+}
+.gridContainerPage{
+    margin: 0 auto;
+    min-width: 414px;
+    max-width: 800px;
+    border: 2px solid black;
+    display: grid;
+    grid-template-columns: 1.5em 1fr 1.5em;
+    grid-template-rows: auto 1em auto 1em;
+    grid-auto-rows: minmax(1em, auto);
+    grid-template-areas: 
+        "...... header ......"
+        "...... ...... ......"
+        "...... headingText ...... "
+        "...... ....... ......"
+        "...... headingTextImg ......"
+        "...... ............ ......"
+        "...... middleBodyText ......"
+        "...... ........... ........"
+        "...... blogs ......"
+        "...... ..... ......"
+        "footerStart footerStart footerStart"
+        "...... footerText ......"
+        "footerEnd footerEnd footerEnd"
+
+
+}
+
+/* ---------- HEADER section -------------*/
+header{
+    grid-area: header;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 60px;
+}
+header img {
+    margin-right: auto;
+    width: 140px;
+    height: 30px;
+}
+header a {
+    margin-left: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #090909;
+    text-decoration: none;
+}
+header a:hover{
+    color: grey;
+    /* text-decoration: underline; */
+
+} 
+
+/* ------------- HEADING TEXT SECTION --------- */
+
+.headingSection{
+    grid-area: headingText;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.headingSection h1 {
+    width: 78%;
+    margin: 0 0 0 0;
+    font-weight: 700;
+    font-size: 45px;
+}
+.headingSectionTextDate{
+    font-size: 12px;
+    padding: 0;
+    font-weight: 400;
+}
+.headingSectionParagraph{
+    font-size: 22px;
+    color: black;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.headingImg{
+    grid-area: headingTextImg;
+    width:100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+
+}
+
+/* -------- MIDDLE PARAGRAPHS SECTION --------- */
+.middleParagraphSection{
+    grid-area: middleBodyText;
+    display: flex;
+    flex-direction: column; 
+}
+.middleParagraphSection p{
+    margin: 12px 0;
+}
+.boldText{
+    font-weight: bold;
+}
+
+/* ----------- BLOGS GRID SECTION --------------- */
+.blogsGridContainer {
+    grid-area: blogs;
+    grid-template-columns: 1fr;
+    display: grid;
+    row-gap: 1rem;
+}
+.blogsGridContainer > p:first-of-type{
+    text-align: center;
+}
+
+.individualBlog{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.individualBlog p:first-of-type {
+    margin: 1rem 0 0 0; 
+    font-weight: 400;
+}
+.individualBlog p:last-of-type {
+    margin: 0.5em 0;
+    color: #505050;
+}
+.individualBlog h2 {
+    font-size: 24px;
+    font-weight: 700; 
+    margin: 1rem 0 0 0;
+    color: #141414;
+
+}
+
+.blogsGridContainer img{
+    height: 232px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.viewMoreBtn {
+    justify-self: center;
+    color: black;
+    font-weight: 700;
+    text-decoration: underline;
+}
+.viewMoreBtn:hover{
+    color: grey;
+}
+
+/* ------------------ FOOTER section --------------- */
+footer{
+    grid-row: footerStart / footerEnd;
+    grid-column: footerStart;
+    background-color: #202020;
+}
+.footerText{
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    grid-area: footerText;
+    color: white;
+    justify-self: center;
+    align-self: center;
+}
+.footerText span{
+    display: block;
+    font-size: 15px;
+    color: #D7D7D7;
+    font-weight: 400;
+}
+
+@media screen and (min-width: 801px){
+
+    .gridContainerPage{
+        max-width: 1100px;
+    }
+    .blogsGridContainer{
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+            "btn btn btn"
+            "blog blog blog"
+            "blog blog blog";
+        gap: 1em
+    }
+    .blogsGridContainer img{
+        grid-area:blog;
+        width: 100%;
+        height: 232px;
+    }
+    .viewMoreBtn {
+        grid-area: btn;
+    }
+}
